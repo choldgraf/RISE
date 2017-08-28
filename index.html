@@ -1,1 +1,211 @@
-My Page
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RISE &#8212; RISE 5.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '5.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Customizing RISE" href="customize.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="rise">
+<h1>RISE<a class="headerlink" href="#rise" title="Permalink to this headline">¶</a></h1>
+<p>As you know... we love <strong>Jupyter/IPython</strong> and we like <strong>Reveal.js</strong> too.</p>
+<p>Previously, we developed a &#8220;converter&#8221; for the <cite>nbconvert</cite> library to
+export a <code class="docutils literal"><span class="pre">ipynb</span></code> file to a <em>STATIC</em> html slideshow based in <strong>Reveal.js</strong> library.</p>
+<p>But with RISE, you don&#8217;t have a <em>STATIC</em> version anymore, you have a <strong>LIVE</strong>
+version! A notebook <strong>rendered</strong> as a <strong>Reveal.js</strong>-based slideshow,
+where you can <strong>execute</strong> code or show to the audience whatever you can show/do
+inside the notebook itself (but in a &#8220;slidy&#8221; way).</p>
+<p><strong>Reveal.js - Jupyter/IPython Slideshow Extension</strong>, also known as <em>live_reveal</em></p>
+<a class="reference external image-reference" href="https://gitter.im/damianavila/RISE"><img alt="Gitter" src="https://badges.gitter.im/Join%20Chat.svg" /></a>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>From the most simple to the most complex one, you have 3 options:</p>
+<p>1 - Using conda (recommended):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">damianavila82</span> <span class="n">rise</span>
+</pre></div>
+</div>
+<p>2 - Using pip (less recommended):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">RISE</span>
+</pre></div>
+</div>
+<p>and then two more steps to install the JS and CSS in the proper places:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">nbextension</span> <span class="n">install</span> <span class="n">rise</span> <span class="o">--</span><span class="n">py</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+</pre></div>
+</div>
+<p>and enable the nbextension:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">nbextension</span> <span class="n">enable</span> <span class="n">rise</span> <span class="o">--</span><span class="n">py</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+</pre></div>
+</div>
+<p>3 - The old way (are sure sure you want to go this path?):</p>
+<p>To install this nbextension, simply run <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code> from the
+<em>RISE</em> repository (please use the latest tag available or try master if you want).</p>
+<p>And then the same two step described in the pip-based installation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">nbextension</span> <span class="n">install</span> <span class="n">rise</span> <span class="o">--</span><span class="n">py</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+</pre></div>
+</div>
+<p>and:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">nbextension</span> <span class="n">enable</span> <span class="n">rise</span> <span class="o">--</span><span class="n">py</span> <span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span>
+</pre></div>
+</div>
+<p>Conclusion: If you use conda, life will be easy ;-)</p>
+<p><strong>NOTE</strong>: in alll the options available the <code class="docutils literal"><span class="pre">--sys-prefix</span></code> option will install and
+enable the extension in the current environment, if you want a <code class="docutils literal"><span class="pre">--user</span></code> based or a
+<code class="docutils literal"><span class="pre">--system</span></code> based installation just use those option instead in the above commands.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>A Very quick video showing how to use RISE lives here: <a class="reference external" href="https://youtu.be/sXyFa_r1nxA">https://youtu.be/sXyFa_r1nxA</a></p>
+<p>In the notebook toolbar, a new button (&#8220;Enter/Exit Live Reveal Slideshow&#8221;)
+will be available.</p>
+<p>In the notebook menu, the &#8220;View&#8221; option contains a &#8220;Cell Toolbar&#8221; sub-menu that gives
+you access to the metadata for each cell. If you select the Slideshow preset, you
+will see in the right corner of each cell a little box where you can select
+the cell type (similar as for the static reveal slides with nbconvert).</p>
+<p>Some notes:
+1. Use <code class="docutils literal"><span class="pre">spacebar</span></code> to go forward and <code class="docutils literal"><span class="pre">shift+spacebar</span></code> to go backward (or the
+visual controller in the slideshow right bottom corner). <code class="docutils literal"><span class="pre">Up</span></code> and <code class="docutils literal"><span class="pre">down</span></code> arrows are reserved to
+interact with notebook cells and cannot be used to navigate the slides, instead
+you can use <code class="docutils literal"><span class="pre">pgup</span></code> and <code class="docutils literal"><span class="pre">pgdown</span></code>.</p>
+<p>2. You can know more about the reveal-specific shortcuts just pressing the help
+button at the slideshow left bottom corner.</p>
+<p>3. In contrast to the traditional Jupyter notebook, the <code class="docutils literal"><span class="pre">Shift-Enter</span></code>
+shortcut does not select the next cell, but will only run the cell (same as
+<code class="docutils literal"><span class="pre">Ctrl-Enter</span></code>). This is intentional to not switch slides by running a cell
+and because some problem arises when you inject new cells on the fly.
+When you exit the presentation mode, the behavior comes back to normal.</p>
+<p>4. Darkish themes have css conflict with the notebook css, so it need customization
+to make them work (not provided by default).</p>
+<p>5. Markdown Images get left aligned by default. Enclose the image like
+<code class="docutils literal"><span class="pre">&lt;center&gt;![noimg](path/to/image.png)&lt;/center&gt;</span></code> to center it.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="customize.html">Customizing RISE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="customize.html#using-python">Using python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customize.html#using-notebook-metadata">Using notebook metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="customize.html#configuration-options">Configuration options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#versions">Versions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#changes">Changes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rise-talk">
+<h2>RISE talk<a class="headerlink" href="#rise-talk" title="Permalink to this headline">¶</a></h2>
+<p>My old talk about <strong>RISE</strong> at <em>SciPy 2014</em> (click on the image to see it):</p>
+<a class="reference external image-reference" href="https://www.youtube.com/watch?v=sZBKruEh0jI"><img alt="RJSE/RISE video" src="http://img.youtube.com/vi/sZBKruEh0jI/0.jpg" /></a>
+</div>
+<div class="section" id="feedback">
+<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
+<p>If you have any feedback, or find any bugs, please
+<a class="reference external" href="https://github.com/damianavila/RISE/issues">open an issue</a>.</p>
+</div>
+<div class="section" id="riselet">
+<h2>Riselet<a class="headerlink" href="#riselet" title="Permalink to this headline">¶</a></h2>
+<p>Coming soon... in fact it is on master but I need to explain how to use it ;-)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">RISE</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#rise-talk">RISE talk</a></li>
+<li><a class="reference internal" href="#feedback">Feedback</a></li>
+<li><a class="reference internal" href="#riselet">Riselet</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="customize.html" title="next chapter">Customizing RISE</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Damian Avila.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
