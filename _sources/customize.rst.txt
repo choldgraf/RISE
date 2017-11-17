@@ -137,8 +137,8 @@ the ``autolaunch`` config option::
 
 .. _config_autoselect:
 
-Automatically select cells based on the current slide
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Select cells based on the current slide
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As you progress into your slideshow, you either move to a new
 (sub)slide, or show (or hide) a new fragment; whenever any
